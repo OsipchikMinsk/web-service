@@ -1,0 +1,43 @@
+<html >
+<head>
+    <title>Update inquiries</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+<div>
+
+</div>
+
+<div>
+
+</div>
+<form method="post" action="/updateInquiry">
+    <input type="text" hidden  name="id" value="{{id}}">
+    <select name="nameOfTopic">
+        {{#topics}}
+            <option hidden value="0">____select topic____</option>
+            <option>{{name}}</option>
+        {{/topics}}
+    </select> <br>
+
+    <input type="text" name="customerName" placeholder="Input customer name">
+    <input type="text" name="description" placeholder="Input description">
+    <input type="text" name="keyOfAttribute" placeholder="Type of Attribbute">
+    <input type="text" name="valueOfAttribute" placeholder="Value of Attribbute">
+    <button type="submit">Update inquiry</button>
+</form>
+
+<div>List of inquiries of customer</div>
+
+
+<div>
+    <b>id=> {{id}}</b>
+    <i> <span>Name of customer => {{customerName}}</span></i>
+    <i> <span>Description => {{description}}</span></i>
+</div>
+
+
+<a href="/main">Go to main page</a>
+</body>
+</html>

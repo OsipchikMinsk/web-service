@@ -1,0 +1,84 @@
+<html >
+<head>
+    <title>Add Inquiry</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.0/mustache.min.js"></script>
+</head>
+
+<body>
+
+    <div>
+        <form class="container dynamic-rows" method="post" action="/addInquiryDb">
+
+            <select name="topic">
+                {{#topics}}
+                    <option hidden value="0">____select topic____</option>
+                    <option value="{{id}}">{{name}}</option>
+                {{/topics}}
+            </select> <br>
+
+            <input type="text" name="customerName" placeholder="Input customer name"><br>
+            <input type="text" name="description" placeholder="Input description"><br>
+            <button type="button" class="btn btn-primary btn-xs add">Add Attribute</button><br>
+            <button type="submit">Add inquiry</button><br>
+
+        </form>
+            <button type="button" class="btn btn-default btn-xs remove">Remove Attribute</button>
+    </div>
+<a href="/main">Go to main page</a>
+</body>
+
+
+<script type="text/template" id="form_rows_tpl">
+        <input type="text" name="AttributeName" id="AttributeName" placeholder="Atribute Name">
+        <input type="text" name="AttributeValue" id="AttributeValue" placeholder="Attribute Value"> <br>
+</script>
+
+<script>
+      var template = $("#form_rows_tpl").html(),
+            $target = $(".dynamic-rows"),
+            $btnAdd = $("button.add"),
+            $btnRemove = $("button.remove"),
+            $msg = $('.msg'),
+            max = 10,
+            count = 1,
+            inputRow = [];
+
+    $btnAdd.click(function(e){
+        e.preventDefault();
+        addRows();
+    });
+
+    $btnRemove.click(function(e){
+        e.preventDefault();
+        removeRows();
+    });
+
+    function addRows(){
+        if(count <= max){
+//            inputRow = {
+//                count : count
+//            }
+            var html = Mustache.to_html(template); //, inputRow
+            $target.append(html);
+            count++;
+        }else{
+            $msg.text('too many fields!');
+        }
+    }
+
+    function removeRows(){
+        if(count <= 1){
+            count = 1;
+        }else{
+            $msg.text('');
+            $target.find('.row').last().remove();
+            count--;
+        }
+    }
+
+    // addRows();
+
+</script>
+</html>

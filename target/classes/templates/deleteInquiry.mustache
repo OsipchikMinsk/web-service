@@ -1,0 +1,29 @@
+<html >
+<head>
+    <title>Add Inquiry</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+<div>
+{{#listOfInquaries}}
+    <div>
+        <b>id=> {{id}}</b>
+        <i> <span>Customer name=> {{customerName}}</span></i>
+        <i> <span>Topic=> {{topic}}</span></i>
+        <i> <span>Description=> {{description}}</span></i>
+        <i> <span>Date=> {{dateOfInquiry}}</span></i>
+
+    </div>
+{{/listOfInquaries}}
+</div>
+<form method="post" action="/deleteInquiry">
+
+    <input type="text" name="inquiryId" placeholder="enter id inquiry">
+    <input type="text" name="customerName" placeholder="enter customer name">
+    <button type="submit">Delete inqiury</button>
+
+</form>
+<a href="/main">Go to main page</a>
+</body>
+</html>

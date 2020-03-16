@@ -1,0 +1,30 @@
+<html >
+<head>
+    <title>All Topics</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+<div>List of topics</div>
+{{#topics}}
+    <div>
+        <b>id=> {{id}}</b>
+       <i> <span>Type=> {{name}}</span></i>
+    </div>
+{{/topics}}
+<a href="/main">Go to main page</a>
+
+<form method="post" action="/sendTopicToMainPage">
+    <select name="topic">
+        {{#topics}}
+            <option hidden value="0">____select topic____</option>
+            <option>{{name}}</option>
+        {{/topics}}
+    </select>
+    <button type="submit">Send Topic </button>
+</form>
+
+
+
+</body>
+</html>

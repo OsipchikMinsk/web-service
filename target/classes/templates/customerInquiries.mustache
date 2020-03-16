@@ -1,0 +1,36 @@
+<html >
+<head>
+    <title>List inquiries</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+<div>
+
+</div>
+<form method="post" action="/customerInquaries">
+    <input type="text" name="customerName" placeholder="Input customer name">
+     <button type="submit">Find inquiries by name</button>
+</form>
+<div>List of inquiries of customer</div>
+
+{{#customerInquiries}}
+    <div>
+        <b>id inquiry => {{id}}</b>
+        <i> <span>Name of customer => {{customerName}}</span></i>
+        <i> <span>Description => {{description}}</span></i>
+        <i> <span>Date of Inquiry => {{dateOfInquiry}}</span></i>
+
+
+    </div>
+{{/customerInquiries}}
+
+<form method="get" action="/findInquiryByNameAndId">
+    <input type="text" name="inquiryId" placeholder="enter id inquiry">
+    <input type="text" name="customerName" placeholder="enter customer name">
+    <button type="submit">Find inquiry</button>
+</form>
+
+<a href="/main">Go to main page</a>
+</body>
+</html>
