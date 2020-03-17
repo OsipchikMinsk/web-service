@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 @Entity
 public class Inquiry {
@@ -78,6 +79,22 @@ public class Inquiry {
 
     public void setCustomerName(String customerName) {
         this.customerName = customerName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Inquiry inquiry = (Inquiry) o;
+        return Objects.equals(id, inquiry.id) &&
+                Objects.equals(topic, inquiry.topic) &&
+                Objects.equals(description, inquiry.description) &&
+                Objects.equals(customerName, inquiry.customerName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, topic, description, customerName);
     }
 
     @Override

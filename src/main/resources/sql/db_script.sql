@@ -37,3 +37,8 @@ ALTER TABLE `inquiry` DROP FOREIGN KEY `attribute_id`; ALTER TABLE `inquiry` ADD
 ALTER TABLE `inquiry` ADD CONSTRAINT `fk_attribute_id` FOREIGN KEY (`attribute_id`) REFERENCES `attribute_of_inquiry`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE `inquiry` ADD `customerName` VARCHAR(50) NOT NULL AFTER `customer_name`;
 ALTER TABLE `inquiry` ADD CONSTRAINT `fk_attribute_id` FOREIGN KEY (`attribute_id`) REFERENCES `inquiry_attribute`(`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+INSERT INTO `inquiry`(`id`, `customer_name`, `date_of_inquiry`, `description`, `topic_id`) 
+VALUES ('21','ArtemTest','2020-03-16 12:02:50','Test','1');
+INSERT INTO `inquiry`(`id`, `customer_name`, `date_of_inquiry`, `description`, `topic_id`)
+VALUES ('2','ArtemTest','2020-03-18 12:02:50','Test2','2')
